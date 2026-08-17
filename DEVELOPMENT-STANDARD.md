@@ -123,16 +123,54 @@ Provides a short practical guide for a user: what the project can do, how to
 run it, and a few useful first actions. It is not a complete manual. Detailed
 reference belongs in CLI help, API documentation, or other generated tooling.
 
+## Documentation boundaries
+
+Keep each document in its own lane. Documents may link to one another, but
+must not become duplicate sources of truth.
+
+- `AGENTS.md` gives agent instructions; it does not contain the full project
+  specification.
+- `PLAN.md` explains intent and scope; it does not define implementation
+  details.
+- `ARCHITECTURE.md` explains structure and boundaries; it does not prescribe
+  every required behavior.
+- `SPEC.md` defines observable behavior; it does not describe internal
+  implementation choices.
+- `CONSTRAINTS.md` defines hard limits; it does not become a general task list.
+- `USER.md` explains user operation; it does not replace tests, API reference,
+  or internal documentation.
+- `TASK.md` tracks current work; it does not become permanent project history.
+- `HANDOFF.md` transfers incomplete work; it does not become a second task
+  tracker or source of truth.
+- `TEST.md` maps behavior to verification; it does not replace executable
+  tests.
+
+Avoid oversized `AGENTS.md`, repeated requirements, permanent temporary files,
+ADRs for trivial changes, and copying implementation details into
+specifications. When information belongs elsewhere, link to that document
+instead of duplicating it.
+
 ## Conditional files
 
 Create these only when they provide real value:
 
 ### `docs/dev/TEST.md`
 
-Create this when verification involves multiple suites, manual procedures,
-special environments, performance checks, or security checks. It should state
-what must be proven, the commands or procedures to run, and the expected
-outcome. Link requirements such as `AUTH-001` to their tests.
+Create this when agents need a dedicated verification map for the project.
+`TEST.md` is for agents to know what to run and what to verify after changes
+or when verification is requested. It may cover functional behavior, behavior
+described in `USER.md`, acceptance criteria from `SPEC.md`, and selected tests
+implemented under directories such as `tests/`.
+
+It should state:
+
+- What behavior or requirement must be proven.
+- Which command, test file, suite, or manual procedure to run.
+- The expected result and relevant environment.
+- Links between requirements, user workflows, and executable tests.
+
+`TEST.md` describes the verification strategy and commands; the executable
+tests remain in the project's normal test infrastructure.
 
 ### `docs/dev/ADR/`
 
