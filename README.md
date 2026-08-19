@@ -3,7 +3,8 @@
 ## Installation
 
 Give your coding agent this repository URL and ask it to read
-`DEVELOPMENT-STANDARD.md`, then initialize the project documentation structure.
+`DEVELOPMENT-STANDARD.md`. It should place the file under `docs/dev/` in the
+target project, then initialize the project documentation structure.
 
 ```text
 https://github.com/fitri/agent-documentation
@@ -22,5 +23,6 @@ off project work without duplicating or accumulating stale documentation.
 
 ## Versioning
 
-Use a tagged release of `DEVELOPMENT-STANDARD.md` when initializing a project.
-Do not automatically pull an unspecified or moving latest version.
+The first release is `v1.0.0.0`. Use a tagged release of
+`DEVELOPMENT-STANDARD.md` when initializing a project. Do not automatically
+pull an unspecified or moving latest version.
